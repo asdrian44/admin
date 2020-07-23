@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./agregar-producto.component.css']
 })
 export class AgregarProductoComponent implements OnInit {
-
+  id=0;
   form:FormGroup;
 
   constructor(private http:ServicioService,private builder:FormBuilder) {
@@ -30,7 +30,7 @@ export class AgregarProductoComponent implements OnInit {
 
     const pro={
 
-    idCat:1,
+    idCat:this.id,
 nombre:this.form.controls.nombre.value,
 precio:this.form.controls.precio.value,
 foto:"null"
