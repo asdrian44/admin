@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ServicioService {
 
-   private url='http://localhost:8080/';
+   private url='https://6d758321b8fb.ngrok.io/';
 
   constructor(private http: HttpClient) { }
 
