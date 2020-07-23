@@ -1,0 +1,16 @@
+
+<div>
+
+  <button mat-button [matMenuTriggerFor]="tablas">Tablas</button>
+  <mat-menu #tablas="matMenu" xPosition="after">
+    <button mat-menu-item (click)="goproductos()">Productos</button>
+    <button mat-menu-item (click)="gopedidos()">Pedidos</button>
+    <button mat-menu-item (click)="goclientes()">Clientes</button>
+    <button mat-menu-item (click)="gocategorias()">Categorias</button>
+  </mat-menu>
+
+
+</div>
+<router-outlet></router-outlet>
+
+

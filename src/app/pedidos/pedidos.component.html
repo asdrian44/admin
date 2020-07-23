@@ -1,0 +1,41 @@
+<div class="mat-elevation-z8">
+
+  <table mat-table #table [dataSource]="data">
+    <ng-container matColumnDef="idCliente">
+      <th mat-header-cell *matHeaderCellDef> idCliente  </th>
+      <td mat-cell *matCellDef="let row"> {{row.idCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="idPedido">
+      <th mat-header-cell *matHeaderCellDef> idPedido </th>
+      <td mat-cell *matCellDef="let row"> {{row.idPedido}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> nombre </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> apellido </th>
+      <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="estados">
+      <th mat-header-cell *matHeaderCellDef> estado del pedido </th>
+      <td mat-cell *matCellDef="let row"> {{row.estados|uppercase}} </td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> total del pedido </th>
+      <td mat-cell *matCellDef="let row"> S/{{row.total|number}} </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef> eliminar </th>
+      <td mat-cell *matCellDef="let row">  <button mat-button>Eliminar</button> </td>
+    </ng-container>
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> editar </th>
+      <td mat-cell *matCellDef="let row">  <button mat-button>editar</button> </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+  </table>
+
+
+</div>

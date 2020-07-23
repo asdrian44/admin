@@ -1,0 +1,16 @@
+  <form class="example-form" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre </mat-label>
+      <input matInput placeholder="Nombre del producto  " value="" formControlName="nombre">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Precio</mat-label>
+      <textarea matInput placeholder="Precio del producto" formControlName="precio"></textarea>
+    </mat-form-field>
+
+
+
+
+    <button (click)="crear()">Crear Producto</button>
+</form>

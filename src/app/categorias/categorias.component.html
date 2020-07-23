@@ -1,0 +1,32 @@
+<div class="mat-elevation-z8">
+
+
+  <table mat-table #table [dataSource]="data">
+
+    <ng-container matColumnDef="idCat">
+      <th mat-header-cell *matHeaderCellDef>idCategoria</th>
+      <td mat-cell *matCellDef="let row">{{row.idCat}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef>Categoria</th>
+      <td mat-cell *matCellDef="let row">{{row.categoria|uppercase}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let row"> <button mat-button>editar</button>  </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let row"> <button mat-button>eliminar</button> </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row;columns:columnas"></tr>
+
+
+  </table>
+
+
+
+
+
+</div>

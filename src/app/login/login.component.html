@@ -1,0 +1,11 @@
+<div class="login-page">
+  <div class="form">
+
+    <form class="login-form" (submit)="ingresar()" [formGroup]="form">
+      <input type="text" placeholder="username" formControlName="username"/>
+      <input type="password" placeholder="password" formControlName="password"/>
+      <button type="submit">Ingresar</button>
+
+    </form>
+  </div>
+</div>
