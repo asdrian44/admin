@@ -16,8 +16,14 @@ export class ClientesComponent implements OnInit {
     this.servicio.listarClientes().subscribe(value => {
 
     this.data=value;
-      console.log(value);
+
     })
+
+
+
+
+
+
   }
 
 }

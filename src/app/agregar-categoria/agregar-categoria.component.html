@@ -1,0 +1,9 @@
+<form class="example-form" [formGroup]="form">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre Categoria </mat-label>
+    <input matInput placeholder="Nombre del producto  "  formControlName="nombrecat">
+  </mat-form-field>
+
+  <button mat-button (click)="agregarCat()">Crear Categoria</button>
+</form>

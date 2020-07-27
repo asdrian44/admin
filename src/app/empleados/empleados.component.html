@@ -4,7 +4,7 @@
   <table mat-table #table [dataSource]="data">
 
     <ng-container matColumnDef="idDetails">
-    <th mat-header-cell *matHeaderCellDef>id_Cliente</th>
+      <th mat-header-cell *matHeaderCellDef>id_Cliente</th>
       <td mat-cell *matCellDef="let row">{{row.idDetails}}  </td>
     </ng-container>
     <ng-container matColumnDef="name">
@@ -42,3 +42,4 @@
 
 
 </div>
+<button mat-button (click)="crear()">Crear Empleado</button>

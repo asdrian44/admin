@@ -1,17 +1,29 @@
-<form class="example-form" [formGroup]="form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Nombre </mat-label>
-    <input matInput placeholder="Nombre del producto  " value="" formControlName="nombre">
-  </mat-form-field>
+<h2 mat-dialog-title>Editar Producto</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre </mat-label>
+      <input matInput placeholder="Nombre del producto  " value="" formControlName="nombre">
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Precio</mat-label>
-    <textarea matInput placeholder="Precio del producto" formControlName="precio"></textarea>
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Precio</mat-label>
+      <input matInput placeholder="Precio del producto" formControlName="precio">
+    </mat-form-field>
 
 
+    <mat-form-field>
+      <ngx-mat-file-input  placeholder="Escoger Imagen" (change)="upload($event)" ></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
+
+    <button mat-button (click)="editar()" cdkFocusInitial>Editar Produto</button>
+
+  </form>
 
 
-  <button (click)="editar()">Aceptar</button>
-</form>
+</mat-dialog-content>
+<div mat-dialog-actions>
 
+
+</div>

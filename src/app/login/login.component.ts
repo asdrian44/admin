@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem("usuario",value.usuario.idUser);
 
-
+          localStorage.setItem("rol",value.usuario.idRol);
           alert("logeado");
           this.router.navigate(['/inicio']);
 

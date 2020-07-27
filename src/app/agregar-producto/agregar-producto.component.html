@@ -1,4 +1,21 @@
   <form class="example-form" [formGroup]="form">
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Categoria </mat-label>
+
+
+      <mat-select  formControlName="categoria">
+
+        <mat-option *ngFor="let item of datos" [value]="item.idCat">
+          {{item.categoria}}
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
     <mat-form-field class="example-full-width">
       <mat-label>Nombre </mat-label>
       <input matInput placeholder="Nombre del producto  " value="" formControlName="nombre">
@@ -6,11 +23,16 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Precio</mat-label>
-      <textarea matInput placeholder="Precio del producto" formControlName="precio"></textarea>
+      <input type="text" matInput placeholder="Precio del producto" formControlName="precio">
     </mat-form-field>
 
 
+    <mat-form-field>
+      <ngx-mat-file-input  placeholder="Escoger Imagen" (change)="upload($event)" ></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
 
+    <br><br>
 
     <button (click)="crear()">Crear Producto</button>
 </form>

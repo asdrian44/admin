@@ -3,27 +3,23 @@ import { ServicioService } from '../servicio.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {EditarProductoComponent} from '../editar-producto/editar-producto.component';
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css']
 })
 export class TablesComponent implements OnInit {
-  foto;
-  id=0;
-  click=false;
+
+
+
   data;
-  form:FormGroup;
+
   columnas:string[]=['idProducto','idCat','nombre','precio','foto','eliminar','editar']
-  constructor( private http: ServicioService,private router:Router,private builder:FormBuilder) {
-
-    this.form=this.builder.group({
-
-      nombre:['',Validators.required],
-      precio:['',Validators.required]
+  constructor( private http: ServicioService,private router:Router,public  modal:MatDialog) {
 
 
-    })
 
 
 
@@ -33,7 +29,7 @@ export class TablesComponent implements OnInit {
 
     this.http.listarProductos().subscribe(value=>{
 
-
+      console.log(value);
       this.data=value;
 
     })
@@ -44,7 +40,15 @@ export class TablesComponent implements OnInit {
 
       alert("Producto Eliminado");
 
-      window.location.reload();
+      //window.location.reload();
+      this.http.listarProductos().subscribe(value=>{
+
+        console.log(value);
+        this.data=value;
+
+      })
+
+
     },error => {
       alert("No puedes eliminar este producto ya que un pedido de un usuario contiene este producto")
     });
@@ -54,34 +58,30 @@ export class TablesComponent implements OnInit {
       this.router.navigate(['inicio/crear']);
   }
 
-  abrir(n,foto){
-    this.click=true;
-    this.id=n;
-    this.foto=foto;
-  }
-
-  editar() {
-
-    const pro={
-      idProducto:this.id,
-      idCat:1,
-      nombre:this.form.controls.nombre.value,
-      precio:this.form.controls.precio.value,
-      foto:this.foto
-
-    };
 
 
-    this.http.editarProducto(pro).subscribe(value => {
+  editar(id,foto,codcat,nombre,precio) {
+    const pro= {
+      idProducto: id,
+      idCat: codcat,
+      nombre: nombre,
+      precio: precio,
+      foto: foto
+    }
+    const modal=this.modal.open(EditarProductoComponent,{
+      data:pro
+      });
 
-      alert("Producto editado correctamente");
-      window.location.reload();
-    },error => {
-      alert("error al editar producto");
-    })
 
 
-    this.click=false;
+
+
+
+
+
+
+
+
   }
 
 

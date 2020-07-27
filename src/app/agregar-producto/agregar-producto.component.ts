@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ServicioService} from '../servicio.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -8,17 +8,25 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./agregar-producto.component.css']
 })
 export class AgregarProductoComponent implements OnInit {
-  id=0;
-  form:FormGroup;
+  id = 0;
+  form: FormGroup;
+  foto;
+  datos;
 
-  constructor(private http:ServicioService,private builder:FormBuilder) {
-
-    this.form=this.builder.group({
-      nombre:['',Validators.required],
-      precio:['',Validators.required]
+  constructor(private http: ServicioService, private builder: FormBuilder) {
 
 
-    })
+    this.http.listarCategoria().subscribe(value => {
+      this.datos = value;
+    });
+
+    this.form = this.builder.group({
+      nombre: ['', Validators.required],
+      precio: ['', Validators.required],
+      categoria: ['', Validators.required],
+
+
+    });
 
 
   }
@@ -28,22 +36,39 @@ export class AgregarProductoComponent implements OnInit {
 
   crear() {
 
-    const pro={
+    const pro = {
 
-    idCat:this.id,
-nombre:this.form.controls.nombre.value,
-precio:this.form.controls.precio.value,
-foto:"null"
+
+      nombre: this.form.controls.nombre.value,
+      precio: this.form.controls.precio.value,
+      idCat: this.form.controls.categoria.value,
+      foto: 'null'
 
     };
 
+
+    this.http.subirImage(this.foto).subscribe(value => {
+      // @ts-ignore
+      pro.foto = value.url;
       this.http.crearProducto(pro).subscribe(value => {
         alert('Producto registrado con exito');
-      window.location.reload();
-      },error => {
 
-        alert("No se pudo registrar el producto");
-      })
+      }, error => {
 
+        alert('No se pudo registrar el producto');
+      });
+
+
+    });
+    this.form.reset();
+
+  //  window.location.reload();
+
+
+  }
+
+  upload(event) {
+    const file = event.target.files[0];
+    this.foto = file;
   }
 }

@@ -7,11 +7,31 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  productos=false;
+  pedidos=false;
+  clientes=false;
+  categorias=false;
+  empleados=false;
   constructor(private router: Router) {
   }
 
   ngOnInit(): void {
+
+
+    const rol=Number(String(localStorage.getItem("rol")));
+
+    if(rol==3){
+      this.pedidos=true;
+    }else if(rol==2){
+
+      this.productos=true;
+      this.pedidos=true;
+      this.clientes=true;
+      this.categorias=true;
+      this.empleados=true;
+    }
+
+
   }
 
   goproductos(): void {
@@ -30,4 +50,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/inicio/categorias']);
   }
 
+  goempleados() {
+    this.router.navigate(['/inicio/empleados']);
+  }
 }

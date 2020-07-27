@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Editar Producto</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="form">
+
+
+    <mat-form-field>
+      <mat-label>Estados pedido</mat-label>
+      <mat-select formControlName="estadopedido">
+
+        <mat-option *ngFor="let item of estadospedidos" [value]="item.idestado">
+
+          {{item.estado}}
+        </mat-option>
+
+      </mat-select>
+
+
+
+    </mat-form-field>
+
+
+
+
+
+
+    <button mat-button (click)="editar()" cdkFocusInitial>Editar estado del pedido</button>
+
+  </form>
+
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+
+
+</div>
+
