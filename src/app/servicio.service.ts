@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ServicioService {
 
-   private url='https://997be9eaf2fd.ngrok.io/';
+   private url='https://4c632e1aed4d.ngrok.io/';
 
   constructor(private http: HttpClient) { }
 
